@@ -1,0 +1,41 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "kee",
+      "camelcase": "Kee",
+      "title": "Kee",
+      "scope": "source.kee",
+      "file-types": [
+        "kee"
+      ],
+      "injection-regex": "^kee$",
+      "class-name": "TreeSitterKee"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "stupid kee lsp",
+    "authors": [
+      {
+        "name": "jmkl",
+        "url": ""
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/tree-sitter/tree-sitter-kee",
+      "funding": ""
+    }
+  },
+  "bindings": {
+    "c": false,
+    "go": false,
+    "java": false,
+    "node": true,
+    "python": false,
+    "rust": false,
+    "swift": false,
+    "zig": false
+  }
+}
