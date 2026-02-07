@@ -1,45 +1,82 @@
-/**
- * @file stupid kee lsp
- * @author jmkl
- * @license MIT
- */
-
-/// <reference types="tree-sitter-cli/dsl" />
-// @ts-check
-
 export default grammar({
+  name: "kee",
 
-  name: 'kee',
-
-  extras: $ => [/\s/],
+  extras: ($) => [/\s/, $.comment],
 
   rules: {
-    source_file: $ => repeat($.statement),
+    source_file: ($) => repeat($.binding),
 
-    statement: $ => seq(
-      field("keybind", $.keybind),
-      "=",
-      field("action", $.action)
-    ),
+    binding: ($) =>
+      seq(
+        field("keybind", $.keybind),
+        "=",
+        field("action", $.action),
+        optional("\n"),
+      ),
 
-    keybind: _ => /[A-Za-z0-9\-]+/,
+    keybind: ($) => seq(repeat(seq($.modifier, "-")), $.key),
 
-    action: $ => seq(
-      $.namespace,
-      "::",
-      $.identifier,
-      optional($.args)
-    ),
+    modifier: ($) =>
+      choice(
+        "M", // Meta/Alt
+        "C", // Control
+        "S", // Shift
+      ),
 
-    namespace: _ => /[a-z]+/,
-    identifier: _ => /[A-Z_]+/,
+    key: ($) =>
+      choice(
+        /[a-zA-Z0-9]/, // Single alphanumeric
+        "up",
+        "down",
+        "left",
+        "right",
+        "pageup",
+        "pagedown",
+        "home",
+        "end",
+        "tab",
+        "space",
+        "return",
+        "escape",
+        "backspace",
+        "delete",
+        /F[0-9]+/, // Function keys
+      ),
 
-    args: $ => seq(
-      "(",
-      repeat(choice($.string, $.identifier)),
-      ")"
-    ),
+    action: ($) =>
+      seq(
+        field("namespace", $.namespace),
+        "::",
+        field("function", $.function_call),
+      ),
 
-    string: _ => /'[^']*'/
-  }
+    namespace: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
+
+    function_call: ($) =>
+      choice(
+        seq(
+          field("name", $.identifier),
+          "(",
+          optional(field("args", $.argument_list)),
+          ")",
+        ),
+        field("name", $.identifier), // For TOGGLEWINDOWLEVEL style
+      ),
+
+    identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
+
+    argument_list: ($) => sep1($.argument, ","),
+
+    argument: ($) => choice($.string, $.number, $.identifier),
+
+    string: ($) => choice(seq("'", /[^']*/, "'"), seq('"', /[^"]*/, '"')),
+
+    number: ($) => /\d+/,
+
+    comment: ($) => token(seq("#", /.*/)),
+  },
 });
+
+function sep1(rule, separator) {
+  return seq(rule, repeat(seq(separator, rule)));
+}

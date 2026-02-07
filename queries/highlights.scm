@@ -1,7 +1,29 @@
-(keybind) @keyword
+; Modifiers
+(modifier) @keyword
+
+; Keys
+(key) @constant
+
+; Namespace
 (namespace) @namespace
-(identifier) @function
+
+; Function names
+(function_call name: (identifier) @function)
+
+; Strings
 (string) @string
 
+; Numbers
+(number) @number
+
+; Comments
+(comment) @comment
+
+; Operators
 "=" @operator
-"::" @punctuation.delimiter
+"::" @operator
+
+; Delimiters
+"(" @punctuation.bracket
+")" @punctuation.bracket
+"-" @punctuation.delimiter
