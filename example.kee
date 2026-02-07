@@ -5,3 +5,4 @@ M-k            = app::FUNCCALL('colorBalance')
 M-left         = app::CYCLEPAGES('PREV')
 M-S-t          = app::TOGGLEWINDOWLEVEL
 M-2            = app::PAGE(2)
+M-2            = app::PAGE(120)
