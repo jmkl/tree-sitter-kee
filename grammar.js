@@ -16,12 +16,7 @@ export default grammar({
 
     keybind: ($) => seq(repeat(seq($.modifier, "-")), $.key),
 
-    modifier: ($) =>
-      choice(
-        "M", // Meta/Alt
-        "C", // Control
-        "S", // Shift
-      ),
+    modifier: ($) => choice("M", "C", "S", "A"),
 
     key: ($) =>
       choice(
@@ -40,7 +35,35 @@ export default grammar({
         "escape",
         "backspace",
         "delete",
-        /F[0-9]+/, // Function keys
+        "kp0",
+        "kp1",
+        "kp2",
+        "kp3",
+        "kp4",
+        "kp5",
+        "kp6",
+        "kp7",
+        "kp8",
+        "kp9",
+        "kpreturn",
+        "kpminus",
+        "kpplus",
+        "kpmultiply",
+        "kpdivide",
+        "kpdelete",
+        "backquote",
+        "minus",
+        "equal",
+        "[",
+        "]",
+        "\\",
+        "intlbackslash",
+        ";",
+        "'",
+        ",",
+        ".",
+        "/",
+        /f[0-9]+/, // Function keys
       ),
 
     action: ($) =>

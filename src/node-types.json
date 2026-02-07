@@ -204,11 +204,27 @@
     "named": false
   },
   {
+    "type": ".",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
     "type": "::",
     "named": false
   },
   {
+    "type": ";",
+    "named": false
+  },
+  {
     "type": "=",
+    "named": false
+  },
+  {
+    "type": "A",
     "named": false
   },
   {
@@ -221,6 +237,22 @@
   },
   {
     "type": "S",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "\\",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
+    "type": "backquote",
     "named": false
   },
   {
@@ -245,6 +277,10 @@
     "named": false
   },
   {
+    "type": "equal",
+    "named": false
+  },
+  {
     "type": "escape",
     "named": false
   },
@@ -253,7 +289,79 @@
     "named": false
   },
   {
+    "type": "intlbackslash",
+    "named": false
+  },
+  {
+    "type": "kp0",
+    "named": false
+  },
+  {
+    "type": "kp1",
+    "named": false
+  },
+  {
+    "type": "kp2",
+    "named": false
+  },
+  {
+    "type": "kp3",
+    "named": false
+  },
+  {
+    "type": "kp4",
+    "named": false
+  },
+  {
+    "type": "kp5",
+    "named": false
+  },
+  {
+    "type": "kp6",
+    "named": false
+  },
+  {
+    "type": "kp7",
+    "named": false
+  },
+  {
+    "type": "kp8",
+    "named": false
+  },
+  {
+    "type": "kp9",
+    "named": false
+  },
+  {
+    "type": "kpdelete",
+    "named": false
+  },
+  {
+    "type": "kpdivide",
+    "named": false
+  },
+  {
+    "type": "kpminus",
+    "named": false
+  },
+  {
+    "type": "kpmultiply",
+    "named": false
+  },
+  {
+    "type": "kpplus",
+    "named": false
+  },
+  {
+    "type": "kpreturn",
+    "named": false
+  },
+  {
     "type": "left",
+    "named": false
+  },
+  {
+    "type": "minus",
     "named": false
   },
   {

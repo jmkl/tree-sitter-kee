@@ -85,6 +85,10 @@
         {
           "type": "STRING",
           "value": "S"
+        },
+        {
+          "type": "STRING",
+          "value": "A"
         }
       ]
     },
@@ -152,8 +156,120 @@
           "value": "delete"
         },
         {
+          "type": "STRING",
+          "value": "kp0"
+        },
+        {
+          "type": "STRING",
+          "value": "kp1"
+        },
+        {
+          "type": "STRING",
+          "value": "kp2"
+        },
+        {
+          "type": "STRING",
+          "value": "kp3"
+        },
+        {
+          "type": "STRING",
+          "value": "kp4"
+        },
+        {
+          "type": "STRING",
+          "value": "kp5"
+        },
+        {
+          "type": "STRING",
+          "value": "kp6"
+        },
+        {
+          "type": "STRING",
+          "value": "kp7"
+        },
+        {
+          "type": "STRING",
+          "value": "kp8"
+        },
+        {
+          "type": "STRING",
+          "value": "kp9"
+        },
+        {
+          "type": "STRING",
+          "value": "kpreturn"
+        },
+        {
+          "type": "STRING",
+          "value": "kpminus"
+        },
+        {
+          "type": "STRING",
+          "value": "kpplus"
+        },
+        {
+          "type": "STRING",
+          "value": "kpmultiply"
+        },
+        {
+          "type": "STRING",
+          "value": "kpdivide"
+        },
+        {
+          "type": "STRING",
+          "value": "kpdelete"
+        },
+        {
+          "type": "STRING",
+          "value": "backquote"
+        },
+        {
+          "type": "STRING",
+          "value": "minus"
+        },
+        {
+          "type": "STRING",
+          "value": "equal"
+        },
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        },
+        {
+          "type": "STRING",
+          "value": "\\"
+        },
+        {
+          "type": "STRING",
+          "value": "intlbackslash"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        },
+        {
+          "type": "STRING",
+          "value": "'"
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "STRING",
+          "value": "."
+        },
+        {
+          "type": "STRING",
+          "value": "/"
+        },
+        {
           "type": "PATTERN",
-          "value": "F[0-9]+"
+          "value": "f[0-9]+"
         }
       ]
     },

@@ -8,7 +8,8 @@
       "scope": "source.kee",
       "file-types": ["kee"],
       "injection-regex": "^kee$",
-      "class-name": "TreeSitterKee"
+      "class-name": "TreeSitterKee",
+      "highlights": "queries/highlights.scm"
     }
   ],
   "metadata": {
