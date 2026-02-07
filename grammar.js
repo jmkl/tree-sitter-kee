@@ -1,7 +1,8 @@
 export default grammar({
   name: "kee",
-
   extras: ($) => [/\s/, $.comment],
+
+  conflicts: ($) => [[$.keybind, $.identifier]],
 
   rules: {
     source_file: ($) => repeat($.binding),
@@ -14,13 +15,19 @@ export default grammar({
         optional("\n"),
       ),
 
-    keybind: ($) => seq(repeat(seq($.modifier, "-")), $.key),
+    keybind: ($) =>
+      choice(
+        // Valid keybind
+        seq(repeat(seq($.modifier, "-")), $.key),
+        // Invalid keybind (for error recovery)
+        $.identifier,
+      ),
 
     modifier: ($) => choice("M", "C", "S", "A"),
 
     key: ($) =>
       choice(
-        /[a-zA-Z0-9]/, // Single alphanumeric
+        /[a-z0-9]/, // Single alphanumeric
         "up",
         "down",
         "left",
@@ -66,33 +73,33 @@ export default grammar({
         /f[0-9]+/, // Function keys
       ),
 
-    action: ($) =>
+    action: ($) => $.function_call,
+
+    function_call: ($) =>
       seq(
-        field("namespace", $.namespace),
-        "::",
-        field("function", $.function_call),
+        optional(seq(field("namespace", $.namespace), "::")),
+        field("function", $.identifier),
+        optional(seq("(", optional(field("arguments", $.argument_list)), ")")),
       ),
 
     namespace: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
-
-    function_call: ($) =>
-      choice(
-        seq(
-          field("name", $.identifier),
-          "(",
-          optional(field("args", $.argument_list)),
-          ")",
-        ),
-        field("name", $.identifier), // For TOGGLEWINDOWLEVEL style
-      ),
 
     identifier: ($) => /[a-zA-Z_][a-zA-Z0-9_]*/,
 
     argument_list: ($) => sep1($.argument, ","),
 
-    argument: ($) => choice($.string, $.number, $.identifier),
+    argument: ($) =>
+      choice(
+        $.string,
+        $.number,
+        $.identifier,
+        $.invalid_string, // For error recovery
+      ),
 
     string: ($) => choice(seq("'", /[^']*/, "'"), seq('"', /[^"]*/, '"')),
+
+    // Unclosed strings for error recovery
+    invalid_string: ($) => choice(seq("'", /[^'\n)]*/), seq('"', /[^"\n)]*/)),
 
     number: ($) => /\d+/,
 
